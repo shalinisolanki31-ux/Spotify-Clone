@@ -1,0 +1,312 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400..700&family=Pacifico&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+h1, h2, h3 h4, h5, h5{
+    margin:0;
+
+}
+body{
+    background-color: black;
+    color:white;
+}
+*{
+    box-sizing:border-box;
+    padding:0;
+    margin:0;
+}
+.logo{
+    display:flex;
+    align-items: center;
+    gap:0.34rem;
+    font-family: "Roboto", sans-serif;
+}
+#heading{
+    font-weight:bolder;
+}
+.left{
+    width:25vw;
+    padding:10px;
+}
+.right{
+    width:75vw;
+    max-height:100vh;
+    overflow-y:scroll;
+    position:relative ;
+}
+
+/* Firefox */
+.right {
+    scrollbar-width: none; /* hide */
+}
+
+/* Chrome, Edge, Safari */
+.right::-webkit-scrollbar {
+    width: 0;
+}
+
+/* Show scrollbar on hover */
+.right:hover::-webkit-scrollbar {
+    width: 8px;
+}
+
+.right:hover::-webkit-scrollbar-thumb {
+    background-color: #2a2a2a; /* light black */
+    border-radius: 10px;
+}
+
+.right:hover::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Firefox hover */
+.right:hover {
+    scrollbar-width: thin;
+    scrollbar-color: #2a2a2a transparent;
+}
+
+ul li{
+    display:flex;
+    gap:0.38rem;
+    font-weight:bolder;
+    padding-top:14px;
+    font-family: "Roboto", sans-serif;
+    font-size:0.72rem;
+    
+}
+.home{
+    padding:10px;
+}
+.library{
+    min-height:76vh;
+    position:relative;/*taking library as the parent element*/
+}
+.libraryheading{
+    display:flex;
+    gap:0.38rem;
+    width:100%;
+    font-weight:bolder;
+    padding-top:14px;
+    padding:23px 14px;
+    font-size:0.5rem;
+    align-items:center;
+    font-family: "Roboto", sans-serif;
+    color:rgb(209, 190, 190);
+}
+.library img{
+    height:13px;
+    width:13px;
+}
+.footer{
+    display:flex;
+    font-size:10px;
+    gap:8px;
+    font-style: none;
+    position:absolute;/*on the basis of library im putting my footer at the bottom*/
+    bottom:20px;
+   
+}
+.footer a{
+     color:rgb(209, 190, 190);
+     text-decoration:none;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    padding:7px;
+    align-items:center;
+}
+button{
+    height:2.43rem;
+    width:5rem;
+    border-radius:2rem;
+    font-weight:bold;
+    border:1px solid white;
+}
+.sign{
+    background-color: #2a2929;
+    color:white;
+    border:none;
+}
+.songs-section{
+    min-height:auto;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+.playlist-header{
+    display:flex;
+    justify-content:space-between;
+}
+.song-heading{
+    font-size:0.89rem;
+    font-family: "Roboto", sans-serif;
+}
+
+.card-container{
+    margin-top:10px;
+    padding-top:0;
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:14px 16px;
+    
+    
+}
+.card{
+    width:226px;
+    height:300px;
+    
+    border-radius:8px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    
+    
+    
+}
+.card:hover{
+    transform: scale(1.045);
+    cursor:pointer;
+    background-color: #373333;
+}
+.card p:hover{
+    text-decoration:underline;
+    transition: all 0.3s ease;
+   
+}
+.card img{
+    object-fit:cover;
+    width:180px;
+    height:180px;
+    margin-top:19px;
+}
+.card h2{
+    padding:2px;
+    margin-left:14px;
+    font-family: "Roboto", sans-serif;
+}
+.card p{
+    margin-left:12px;
+    margin-right:2.34px;
+    font-family: "Roboto", sans-serif;
+    font-size:0.78rem;
+    padding:5px;
+    
+}
+.song-heading h2, .playlist-header h2{
+    margin :0;
+}
+
+.songs-section h2{
+    margin: 0 0 8px 0;
+}
+
+.artists-section{
+    min-height:auto;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    
+}
+.artists-container{
+    margin-top:10px;
+    padding-top:0;
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap:5px 5px;
+    
+    
+}
+.artist-card img{
+    object-fit:cover;
+    border-radius:50%;
+    height:180px;
+    width:180px;
+}
+.artist-card p{
+    margin-left:12px;
+    margin-right:2.34px;
+    font-family: "Roboto", sans-serif;
+    font-size:0.83rem;
+    padding:5px;
+    text-align:center;
+    
+}
+.artist-card:hover{
+    transform: scale(1.045);
+    cursor:pointer;
+    
+}
+
+
+.card{
+    position: relative;
+
+}
+.play{
+    position: absolute;
+    bottom:100px;
+    right:30px;
+     opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+}
+.card:hover .play{
+    opacity:1;
+    transform:scale(1);
+}
+
+
+
+
+
+
+
+
+/* .player {
+            background: #181818;
+            padding: 20px;
+            width: 300px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        button {
+            background: #1db954;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+         input[type="range"] {
+            width: 100%;
+        }
+
+        .time {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            margin-top: 5px;
+        } */
+
+
+
+    .playbar{
+    width: 100%;
+    height: 45px;
+    background-color: #1DB954;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    position:sticky;
+    margin-top: 0px;
+}
+.playbar:hover{
+    cursor:pointer;
+}
+
+    

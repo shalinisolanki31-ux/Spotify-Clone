@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400..700&family=Pacifico&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+body{
+    background-color: black;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.sign-up{
+    height:32rem;
+    width:24rem;
+    text-align: center;
+    position: relative;
+    
+}
+
+img{
+    height:30px;
+    width:30px;
+}
+h1{
+    font-weight: bolder;
+    font-size:48px;
+    font-family: "Roboto", sans-serif;
+    color:white;
+}
+label{
+    color:white;
+    font-family: "Roboto", sans-serif;
+    font-size:12px;
+    font-weight: bold;
+    display:block;
+    width:100%;
+    
+}
+
+input{
+    width:80%;
+    height:11%;
+    border-radius:8px;
+    padding:13px;
+    background-color: black;
+    border:1px solid grey;
+}
+i{
+    color:white;
+    
+}
+.field{
+    position: relative;
+    margin-top:25px;
+}
+.field i{
+    position: absolute;
+    right:50px;
+    top:30%;
+    translate:translateY(-50%);
+    font-size:0.88rem;
+}
+
+input:hover{
+    border: 1px solid white;
+}
+a{
+    font-family: "Roboto", sans-serif;
+    font-size:0.82rem;
+    color:#3be357;
+    text-decoration: underline;
+    text-decoration-color:#3be357 ;
+    margin-right:23px;
+    padding:17px 10px 5px 37px;
+}
+
+.external{
+    display:flex;
+    align-items: self-start;
+
+}
+button{
+    font-family: "Roboto", sans-serif;
+    margin-top: 13.45px;
+    width:80%;
+    height:7.9%;
+    border-radius:24px;
+    padding:13px;
+    font-size:1rem;
+    background-color: #3af059;
+    font-weight: 600;
+    border: none;
+    outline: none;
+}
+button:hover{
+    cursor:pointer;
+    background-color: #5ef376;
+}
+p{
+    color:white;
+    padding:14px 10px 5px;
+    font-family: "Roboto", sans-serif;
+    font-size:0.88rem;
+    margin-bottom:17px;
+}
+
+.register{
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* spacing between buttons */
+    margin-left: 37px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    width: 87%;
+    border-radius: 24px;
+    padding: 12px 18px;
+    font-size: 0.89rem;
+    font-weight: bolder;
+    border: 1px solid grey;
+    cursor: pointer;
+}
+.btn:hover{
+    border: 1px solid white;
+}
+
+.btn svg {
+    margin-right: 12px; /* space between logo and text */
+    flex-shrink: 0;
+}
+
+.account{
+    margin-top:2rem;
+    color:grey;
+}
+.login{
+    font-family: "Roboto", sans-serif;
+    font-size: 0.91rem;
+    color:white;
+    text-decoration: none;
+    font-weight: bolder;
+    display:inline-block;
+    transition:transform 0.5s ease;
+}
+.login:hover{
+    transform: scale(1.045);
+    font-size:1rem;
+    cursor: pointer;
+}
+.another{
+    margin-top:0rem;
+    display:flex;
+    flex-direction: column;
+    gap:0.34rem;
+}
+span{
+     font-family: "Roboto", sans-serif;
+     font-size:0.8rem;
+     margin-top: 0;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px black inset !important;
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
