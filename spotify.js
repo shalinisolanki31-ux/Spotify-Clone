@@ -11,7 +11,11 @@ console.log("Hello Shalini");
 const musicData = {
     1:{
         songs : [
-            {name: "Ishq Jalakar", src : "songs/Dhurandhar/ishqjalakar.mp3"},
+            {name: "Ishq Jalakar", 
+            src : "songs/Dhurandhar/ishqjalakar.mp3",
+            desc : "From Dhurandhar album",
+            image : "dhurandhar.png"
+        },
             {name : "Gehra Hua" ,src : "songs/Dhurandhar/gehrahua.mp3"},
             {name : "Rehman Dakait", src : "songs/Dhurandhar/sher-e-baloch.mp3"},
             {name : "Shararat", src : "songs/Dhurandhar/shararat.mp3"},
@@ -111,10 +115,15 @@ function playSong(index){//currently the index will go in this function which wi
     if(!currentPlaylist.length)return;//if there is an empty playlist which means that the length is 0 then the function will stop
     
     currentSongIndex = index;//the current song index will be stored
+    const song = currentPlaylist[currentSongIndex];
     audio.src = currentPlaylist[currentSongIndex].src;
     audio.play();
 
-    songInfo.innerText = currentPlaylist[currentSongIndex].name;//the currentsong name would be displayed in the song info internally
+    //update playbar UI
+    title.textContent = song.name;
+    desc.textContent = song.desc || "";
+    image.src = song.image || "default.jpg"; 
+    // songInfo.innerText = currentPlaylist[currentSongIndex].name;//the currentsong name would be displayed in the song info internally
     updatePlaybarUI(true);//true here means that song is playing hide pay icon and show pause icon
 }
 
@@ -181,12 +190,12 @@ function updatePlaybarUI(isPlaying){
     console.log("pauseIcon:", pauseIcon);
     if(isPlaying)
     {
-        playIcon.setAttribute("display", "none");   //if the current song playing is true to none false to block then hide the play icon when the song is playing and whe the song is paused show the play icon 
-        pauseIcon.setAttribute("display", "inline");
+        playIcon.style.display = "none";  //if the current song playing is true to none false to block then hide the play icon when the song is playing and whe the song is paused show the play icon 
+        pauseIcon.style.display = "inline";
     }
     else{
-        playIcon.setAttribute("display", "inline");
-        pauseIcon.setAttribute("display", "none");
+        playIcon.style.display = "inline";
+        pauseIcon.style.display = "none";
     }
 }
 
@@ -205,98 +214,29 @@ document.getElementById("playPauseBtn").addEventListener("click", ()=>{
         
     }
 });
-// const audio = document.getElementById("audioPlayer");
-// const playPauseBtn = document.getElementById("playPauseBtn");
-// const progressBar = document.getElementById("progressBar");
-// const currentTimeEl = document.getElementById("currentTime");
-// const durationEl = document.getElementById("duration");
-
-// playPauseBtn.addEventListener("click", async () => {
-//     try {
-//         if (audio.paused) {
-//             await audio.play();
-//             playPauseBtn.textContent = "⏸ Pause";
-//             console.log("Audio playing");
-//         } else {
-//             audio.pause();
-//             playPauseBtn.textContent = "▶ Play";
-//             console.log("Audio paused");
-//         }
-//     } catch (err) {
-//         console.error("Playback error:", err);
-//         alert("Audio failed to play. Check console.");
-//     }
-// });
-
-// audio.addEventListener("loadedmetadata", () => {
-//     progressBar.max = audio.duration;
-//     durationEl.textContent = formatTime(audio.duration);
-// });
-
-// audio.addEventListener("timeupdate", () => {
-//     progressBar.value = audio.currentTime;
-//     currentTimeEl.textContent = formatTime(audio.currentTime);
-// });
-
-// progressBar.addEventListener("input", () => {
-//     audio.currentTime = progressBar.value;
-// });
-
-// function formatTime(time) {
-//     if (isNaN(time)) return "0:00";
-//     const minutes = Math.floor(time / 60);
-//     const seconds = Math.floor(time % 60).toString().padStart(2, "0");
-//     return `${minutes}:${seconds}`;
-// }
 
 
 
+let parent = document.createElement("div");
+parent.classList.add("parent-container");
 
-//renedering songs on next page
+let image = document.createElement("img");
+image.classList.add("image");
 
+let textContainer = document.createElement("div");
+textContainer.classList.add("text-container");
 
+let title = document.createElement("h4");
+title.classList.add("title");
 
-//   document.querySelectorAll(".card").forEach(card => {
-//    card.addEventListener("click", () => {
-//      const title = card.dataset.title;
-//      const desc = card.dataset.desc;
-//       const img = card.dataset.img;
+let desc = document.createElement("p");
+desc.classList.add("description");
 
-//      const right = document.getElementById("rightSection");
-
-//       right.innerHTML = `
-//        <div class="song-detail">
-//           <img src="${img}" alt="${title}" />
-//          <h2>${title}</h2>
-//          <p>${desc}</p>
-//         </div>
-//      `;
-//     });
-//   }); 
-
-
-// document.querySelectorAll(".card").forEach(card => {
-//   card.addEventListener("click", () => {
-
-//     localStorage.setItem("songData", JSON.stringify({
-//       title: card.dataset.title,
-//       desc: card.dataset.desc,
-//       img: card.dataset.img
-//     }));
-
-//     fetch("songs.html")
-//       .then(res => res.text())
-//       .then(html => {
-//         document.getElementById("rightSection").innerHTML = html;
-
-//         // After HTML is injected, now populate the data
-//         const data = JSON.parse(localStorage.getItem("songData"));
-//         document.getElementById("songImg").src = data.img;
-//         document.getElementById("songTitle").textContent = data.title;
-//         document.getElementById("songDesc").textContent = data.desc;
-//       });
-//   });
-// });
+textContainer.appendChild(title);
+textContainer.appendChild(desc);
+parent.appendChild(image);
+parent.appendChild(textContainer);
+songInfo.appendChild(parent);
 
 
 
@@ -312,37 +252,22 @@ document.getElementById("playPauseBtn").addEventListener("click", ()=>{
 
 
 
-// document.querySelectorAll(".card").forEach(card => {
-//   card.addEventListener("click", () => {
-//     const songId = card.dataset.id;
-
-//     // Update right section
-//     document.getElementById("rightSection").innerHTML = `
-//       <h2>Song ${songId}</h2>
-//     `;
-
-//     // Add history entry
-//     history.pushState({ songId: songId }, "", `?id=${songId}`);
-//   });
-// });
 
 
 
-// window.addEventListener("popstate", function(event) {
-//   const state = event.state;
 
-//   if (state && state.songId) {
-//     // update right section based on state.songId
-//     document.getElementById("rightSection").innerHTML = `
-//       <h2>Song ${state.songId}</h2>
-//     `;
-//   } else {
-//     // If no state, show default page
-//     document.getElementById("rightSection").innerHTML = `
-//       <h2>Welcome Back</h2>
-//     `;
-//   }
-// });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

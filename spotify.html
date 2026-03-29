@@ -52,7 +52,6 @@
                 </div>
             </div>
 
-
             <div class="songs-section bg-light-grey p-1">
                     <h2>Today's Biggest Hits</h2>
                 <div class="card-container">
@@ -279,73 +278,60 @@
             </div>
 
 
-
-           
-           <!-- <div class="player">
-        <h3>My Favourite Song</h3>
-
-        <button id="playPauseBtn">▶ Play</button>
-
-        <input type="range" id="progressBar" value="0">
-
-        <div class="time">
-            <span id="currentTime">0:00</span>
-            <span id="duration">0:00</span>
-        </div>
-
-         <-- Hidden Audio Element -->
-        <!-- <audio id="audioPlayer" src="saiyara.mp3"></audio>
-        </div> -->
-
         
-        <div class="playbar">
-            <div class="songInfo"></div><!--this div is empty because the JS will fill it with the current song name playing in the playlist-->
-            <div class="songButtons">
+        
+        </div> <!--right div end -->
+    </div>
+    <div class="playbar">
+        <div class="playbar-top">
+                        <div class="songInfo"></div><!--this div is empty because the JS will fill it with the current song name playing in the playlist-->
 
-                <svg id="prevBtn"width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-  <!-- Green background -->
-  <circle cx="32" cy="32" r="32" fill="#1DB954"/>
-
-  <!-- Previous icon -->
-  <rect x="18" y="20" width="4" height="24" fill="#000000"/>
-  <polygon points="42,20 26,32 42,44" fill="#000000"/>
+        </div>
+            <div class="playbar-bottom">
+                <div class="songButtons">
+                              <!-- Shuffle Button -->
+<i class="fa-solid fa-shuffle" style="color:#808080;"></i>
+                <!-- Previous Button -->
+<svg id="prevBtn" width="36" height="36" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Vertical bar -->
+  <rect x="18" y="16" width="4" height="32" fill="#808080"/>
+  <!-- Left-pointing triangle -->
+  <polygon points="44,16 28,32 44,48" fill="#808080"/>
 </svg>
 
-                <svg id="playPauseBtn" width="40" height="40" viewBox="0 0 64 64"
-     xmlns="http://www.w3.org/2000/svg">
-
-  <!-- Green background -->
-  <circle cx="32" cy="32" r="32" fill="#1DB954"/>
-
+<!-- Play / Pause Button -->
+<svg id="playPauseBtn" width="36" height="36" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
   <!-- PLAY icon -->
+    <circle cx="32" cy="32" r="32" fill="#FFFFFF"/>
   <g id="playIcon">
-    <polygon points="26,20 26,44 46,32" fill="#000000"/>
+    <polygon points="26,18 26,46 46,32" fill="#000000"/>
   </g>
-
   <!-- PAUSE icon -->
-  <g id="pauseIcon">
-    <rect x="24" y="20" width="6" height="24" fill="#000000"/>
-    <rect x="34" y="20" width="6" height="24" fill="#000000"/>
+  <g id="pauseIcon" style="display:none;">
+    <rect x="24" y="18" width="6" height="28" fill="#808080"/>
+    <rect x="34" y="18" width="6" height="28" fill="#808080"/>
   </g>
-
 </svg>
 
-        <svg id="nextBtn"width="40" height="40" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-  <!-- Green background -->
-  <circle cx="32" cy="32" r="32" fill="#1DB954"/>
-
-  <!-- Next icon -->
-  <rect x="42" y="20" width="4" height="24" fill="#000000"/>
-  <polygon points="22,20 38,32 22,44" fill="#000000"/>
+<!-- Next Button -->
+<svg id="nextBtn" width="36" height="36" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Vertical bar -->
+  <rect x="42" y="16" width="4" height="32" fill="#808080"/>
+  <!-- Right-pointing triangle -->
+  <polygon points="20,16 36,32 20,48" fill="#808080"/>
 </svg>
+
+<i class="fa-solid fa-repeat" style="color:#808080;"></i>
             <div class="songTime">
                 
             </div>
-
+            
+            </div>
+            <div class="progress-container">
+                <input type="range" value="0" id="progress">
+            </div>
             </div>
         </div>
-        </div> <!--right div end -->
-    </div>
     <script src="spotify.js"></script>
 </body>
 </html>
