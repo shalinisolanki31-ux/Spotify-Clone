@@ -116,13 +116,14 @@ function playSong(index){//currently the index will go in this function which wi
     
     currentSongIndex = index;//the current song index will be stored
     const song = currentPlaylist[currentSongIndex];
-    audio.src = currentPlaylist[currentSongIndex].src;
+    audio.src = song.src;
     audio.play();
 
     //update playbar UI
     title.textContent = song.name;
     desc.textContent = song.desc || "";
     image.src = song.image || "default.jpg"; 
+    image.style.display = "block";
     // songInfo.innerText = currentPlaylist[currentSongIndex].name;//the currentsong name would be displayed in the song info internally
     updatePlaybarUI(true);//true here means that song is playing hide pay icon and show pause icon
 }
@@ -131,33 +132,55 @@ function playSong(index){//currently the index will go in this function which wi
 
 
 //handle card play btn click
-document.addEventListener("click", (e)=>{
-    const playBtn = e.target.closest(".play");//this will check that whetehr the user has clicked on the card's playbtn closest means the nearest ancestor to .play
-    if(!playBtn)return;//if the user has clicked anywhere on the page the song will not be played
 
-    const card = playBtn.closest(".card");//it will check that which card this playbtn belongs to. Basically it will find the parent card that the play button belongs to
-    const cardId = card.dataset.id;//which playlist does this card represent
-
-    const cardData = musicData[cardId];//it will get the cardId from musicData.It will retrieve the data from the specific card 
-    if(!cardData) return;
-
-    currentPlaylist = cardData.songs;//it will replace the currentplaylist with new one .Loads the song associated with the clicked card
+document.addEventListener("click", (event)=>{
+    const playBtn = event.target.closest('.play');
+    if(!playBtn)return;
+    const card = playBtn.closest(".card");
+    const cardId = card.dataset.id;
+    const cardData = musicData[cardId];
+    if(!cardData)return;
+    currentPlaylist = cardData.songs;
     playSong(0);
-});
+})
+
+// document.addEventListener("click", (e)=>{
+//     const playBtn = e.target.closest(".play");//this will check that whetehr the user has clicked on the card's playbtn closest means the nearest ancestor to .play
+//     if(!playBtn)return;//if the user has clicked anywhere on the page the song will not be played
+
+//     const card = playBtn.closest(".card");//it will check that which card this playbtn belongs to. Basically it will find the parent card that the play button belongs to
+//     const cardId = card.dataset.id;//which playlist does this card represent
+
+//     const cardData = musicData[cardId];//it will get the cardId from musicData.It will retrieve the data from the specific card 
+//     if(!cardData) return;
+
+//     currentPlaylist = cardData.songs;//it will replace the currentplaylist with new one .Loads the song associated with the clicked card
+//     playSong(0);
+// });
 
 
 
 
 //autoplay next song when current ends
-
-audio.addEventListener("ended", () => {
-    if (currentSongIndex < currentPlaylist.length - 1) {
-        playSong(currentSongIndex + 1);
+audio.addEventListener("ended", ()=>{
+    if(currentSongIndex<currentPlaylist.length-1)
+    {
+        playSong(currentSongIndex+1);
     }
     else{
-        updatePlaybarUI(false);//this means that song has now ended and we have to show the play icon. if i will remove this the UI still shows the pause icon
+        updatePlaybarUI(false);
     }
-});
+})
+
+
+// audio.addEventListener("ended", () => {
+//     if (currentSongIndex < currentPlaylist.length - 1) {
+//         playSong(currentSongIndex + 1);
+//     }
+//     else{
+//         updatePlaybarUI(false);//this means that song has now ended and we have to show the play icon. if i will remove this the UI still shows the pause icon
+//     }
+// });
 
 
 
@@ -178,20 +201,16 @@ document.getElementById("prevBtn").addEventListener("click", () => {
 // });
 
 
-
-
-
 const playIcon = document.getElementById("playIcon");
 const pauseIcon = document.getElementById("pauseIcon");
 
+
 function updatePlaybarUI(isPlaying){
-    console.log("updatePlaybarUI:", isPlaying);
-    console.log("playIcon:", playIcon);
-    console.log("pauseIcon:", pauseIcon);
     if(isPlaying)
     {
-        playIcon.style.display = "none";  //if the current song playing is true to none false to block then hide the play icon when the song is playing and whe the song is paused show the play icon 
+        playIcon.style.display = "none";
         pauseIcon.style.display = "inline";
+
     }
     else{
         playIcon.style.display = "inline";
@@ -199,12 +218,33 @@ function updatePlaybarUI(isPlaying){
     }
 }
 
+// const playIcon = document.getElementById("playIcon");
+// const pauseIcon = document.getElementById("pauseIcon");
+
+// function updatePlaybarUI(isPlaying){
+//     console.log("updatePlaybarUI:", isPlaying);
+//     console.log("playIcon:", playIcon);
+//     console.log("pauseIcon:", pauseIcon);
+//     if(isPlaying)
+//     {
+//         playIcon.style.display = "none";  //if the current song playing is true to none false to block then hide the play icon when the song is playing and whe the song is paused show the play icon 
+//         pauseIcon.style.display = "inline";
+//     }
+//     else{
+//         playIcon.style.display = "inline";
+//         pauseIcon.style.display = "none";
+//     }
+// }
+
 
 audio.addEventListener("play", ()=>updatePlaybarUI(true));
 audio.addEventListener("pause", ()=>updatePlaybarUI(false));
 
 document.getElementById("playPauseBtn").addEventListener("click", ()=>{
-    if(!audio.src)return;
+    if(!audio.src){
+        alert("Please select a playlist first");
+        return;
+    }
     if(audio.paused){
         audio.play();
        
@@ -240,7 +280,14 @@ songInfo.appendChild(parent);
 
 
 
+let progress = document.getElementById("progress");
 
+audio.addEventListener("timeupdate", ()=>{
+   progress.value = audio.currentTime;
+})
+ audio.addEventListener("loadedmetadata", () => {
+     progress.max = audio.duration;
+ });
 
 
 

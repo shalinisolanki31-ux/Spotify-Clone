@@ -261,9 +261,10 @@ button{
     bottom:0;
     height: 75px;
     background-color: black;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    /* flex-direction: row; */
     padding: 3px;
     position:fixed;
     margin-top: 0px;
@@ -290,7 +291,7 @@ button{
 }
 #progress{
     -webkit-appearance:none;
-    width:50%;
+    width:100%;
    max-width:500px;
    height:3px;
     background-color: grey;
@@ -309,6 +310,7 @@ button{
     height:50px;
     width:50px;
     border-radius: 3px;
+    display:none;
 }  
 .parent-container{
     display:flex;
@@ -321,6 +323,7 @@ button{
     display:flex;
     flex-direction: row;
     align-items: center;
+    justify-content: flex-start;
 }
 .playbar-bottom{
     display: flex;
