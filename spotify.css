@@ -268,8 +268,8 @@ button{
     padding: 3px;
     position:fixed;
     margin-top: 0px;
-    padding:0 15px;
-    gap:50px;
+    padding:0 12px;
+    gap:120px;
 }
 .playbar:hover{
     cursor:pointer;
@@ -333,4 +333,17 @@ button{
     width:100%;
     max-width:800px;
     
+}
+
+.songTime{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:0;
+}
+.songTime span{
+    margin:0;
+    padding:0;
+    font-size: 0.79rem;
+    color:grey;
 }

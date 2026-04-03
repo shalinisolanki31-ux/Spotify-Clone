@@ -285,11 +285,37 @@ let progress = document.getElementById("progress");
 audio.addEventListener("timeupdate", ()=>{
    progress.value = audio.currentTime;
 })
- audio.addEventListener("loadedmetadata", () => {
-     progress.max = audio.duration;
- });
+//  audio.addEventListener("loadedmetadata", () => {
+//      progress.max = audio.duration;
+//  });
 
 
+progress.addEventListener('input', ()=>{
+    console.log(progress.value);
+    audio.currentTime = progress.value;
+})
+
+
+function formatTime(seconds){
+    let minutes = Math.floor(seconds / 60);
+    let remSecs = Math.floor(seconds % 60);
+    if(remSecs < 10) remSecs = '0' + remSecs;
+    return minutes + ":" + remSecs;
+}
+
+const currentTime = document.getElementById("current-time");
+const duration = document.getElementById("duration");
+
+audio.addEventListener("loadedmetadata", ()=>{
+    currentTime.textContent = formatTime(audio.currentTime);
+    duration.textContent = formatTime(audio.duration);
+    progress.max = audio.duration;
+})
+
+audio.addEventListener("timeupdate", ()=>{
+    currentTime.textContent = formatTime(audio.currentTime);
+    progress.value = audio.currentTime;
+})
 
 
 
