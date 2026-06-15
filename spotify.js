@@ -16,7 +16,11 @@ const musicData = {
             desc : "From Dhurandhar album",
             image : "dhurandhar.png"
         },
-            {name : "Gehra Hua" ,src : "songs/Dhurandhar/gehrahua.mp3"},
+            {name : "Gehra Hua" ,
+            src : "songs/Dhurandhar/gehrahua.mp3",
+            desc : "From Dhurandhar album",
+            image : "dhurandhar.png"
+        },
             {name : "Rehman Dakait", src : "songs/Dhurandhar/sher-e-baloch.mp3"},
             {name : "Shararat", src : "songs/Dhurandhar/shararat.mp3"},
             {name : "Lutt Le Gaya", src : "songs/Dhurandhar/Lutt_Le_Gaya.mp3"},
